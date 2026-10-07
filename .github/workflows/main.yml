@@ -24,16 +24,11 @@ jobs:
         run: |
           wget -q https://services.gradle.org/distributions/gradle-8.10.2-bin.zip
           unzip -q gradle-8.10.2-bin.zip
-          echo "$PWD/gradle-8.10.2/bin" >> $GITHUB_PATH
 
       - name: Create Android project
         run: |
           mkdir -p app/src/main/java/com/nourgpt/ai
-          mkdir -p app/src/main/res/mipmap-hdpi
-          mkdir -p app/src/main/res/mipmap-mdpi
-          mkdir -p app/src/main/res/mipmap-xhdpi
-          mkdir -p app/src/main/res/mipmap-xxhdpi
-          mkdir -p app/src/main/res/mipmap-xxxhdpi
+          mkdir -p app/src/main/res/values
 
           cat > settings.gradle <<'EOF'
           pluginManagement {
@@ -81,6 +76,19 @@ jobs:
           }
           EOF
 
+          cat > app/src/main/res/values/styles.xml <<'EOF'
+          <resources>
+              <style name="AppTheme"
+                  parent="android:style/Theme.Material.Light.NoActionBar">
+                  <item name="android:fontFamily">sans</item>
+                  <item name="android:colorAccent">#000000</item>
+                  <item name="android:navigationBarColor">#000000</item>
+                  <item name="android:statusBarColor">#000000</item>
+                  <item name="android:windowLightStatusBar">false</item>
+              </style>
+          </resources>
+          EOF
+
           cat > app/src/main/AndroidManifest.xml <<'EOF'
           <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -89,8 +97,7 @@ jobs:
               <application
                   android:theme="@style/AppTheme"
                   android:label="NOURGPT"
-                  android:usesCleartextTraffic="true"
-                  android:resizeableActivity="true">
+                  android:usesCleartextTraffic="true">
 
                   <activity
                       android:name=".MainActivity"
@@ -106,21 +113,6 @@ jobs:
               </application>
 
           </manifest>
-          EOF
-
-          mkdir -p app/src/main/res/values
-
-          cat > app/src/main/res/values/styles.xml <<'EOF'
-          <resources>
-              <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
-                  <item name="android:fontFamily">sans</item>
-                  <item name="android:windowActionModeOverlay">true</item>
-                  <item name="android:colorAccent">#000000</item>
-                  <item name="android:navigationBarColor">#000000</item>
-                  <item name="android:statusBarColor">#000000</item>
-                  <item name="android:windowLightStatusBar">false</item>
-              </style>
-          </resources>
           EOF
 
           cat > app/src/main/java/com/nourgpt/ai/MainActivity.java <<'EOF'
@@ -144,16 +136,18 @@ jobs:
                   setContentView(webView);
 
                   WebSettings settings = webView.getSettings();
+
                   settings.setJavaScriptEnabled(true);
                   settings.setDomStorageEnabled(true);
                   settings.setDatabaseEnabled(true);
                   settings.setAllowFileAccess(true);
-                  settings.setLoadWithOverviewMode(false);
-                  settings.setUseWideViewPort(true);
+                  settings.setAllowContentAccess(true);
 
                   webView.setWebViewClient(new WebViewClient());
 
-                  webView.loadUrl("https://laminujr.github.io/NOURGPT-/");
+                  webView.loadUrl(
+                      "https://laminujr.github.io/NOURGPT-/"
+                  );
               }
 
               @Override
@@ -169,4 +163,10 @@ jobs:
 
       - name: Build NOURGPT APK
         run: |
-          grad
+          ./gradle-8.10.2/bin/gradle assembleDebug --no-daemon
+
+      - name: Upload NOURGPT APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: NOURGPT-APK
+          path: app/build/outputs/apk/debug/app-debug.apk
