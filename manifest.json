@@ -1,0 +1,56 @@
+{
+  "name": "NOURGPT — Intelligent AI",
+  "short_name": "NOURGPT",
+  "description": "NOURGPT — Intelligent AI by Muhammad Laminu and NOUR OFFICIALS STUDIO for learning, coding, creativity and everyday questions.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+
+  "background_color": "#050505",
+  "theme_color": "#050505",
+
+  "lang": "en",
+  "dir": "ltr",
+
+  "categories": [
+    "education",
+    "productivity",
+    "utilities"
+  ],
+
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "screenshots": [],
+
+  "shortcuts": [
+    {
+      "name": "New Chat",
+      "short_name": "New Chat",
+      "description": "Start a new conversation with NOURGPT",
+      "url": "./index.html?action=new-chat",
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+
+  "prefer_related_applications": false
+}

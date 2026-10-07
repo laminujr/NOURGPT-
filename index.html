@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0a0a0a"
+    >
+
+    <meta
+        name="description"
+        content="NOURGPT — An intelligent AI assistant by NOUR OFFICIALS STUDIO."
+    >
+
+    <title>NOURGPT — AI Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         APP
+    ========================== -->
+
+    <div class="app">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-top">
+
+                <div class="brand">
+
+                    <div class="brand-logo">
+                        N
+                    </div>
+
+                    <div class="brand-text">
+                        <strong>NOURGPT</strong>
+                        <span>AI Assistant</span>
+                    </div>
+
+                </div>
+
+                <button
+                    class="new-chat-btn"
+                    id="newChatBtn"
+                    type="button"
+                >
+                    <span>＋</span>
+                    <span>New chat</span>
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-label">
+                    Recent
+                </span>
+
+                <div
+                    class="chat-history"
+                    id="chatHistory"
+                >
+                    <!-- Chat history will appear here -->
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="creator-card">
+
+                    <div class="creator-avatar">
+                        ML
+                    </div>
+
+                    <div class="creator-info">
+                        <strong>
+                            Muhammad Laminu
+                        </strong>
+
+                        <span>
+                            NOUR OFFICIALS STUDIO
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+
+        <main class="main">
+
+            <!-- Header -->
+
+            <header class="topbar">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    type="button"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-brand">
+
+                    <div class="mini-logo">
+                        N
+                    </div>
+
+                    <strong>
+                        NOURGPT
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="profile-btn"
+                    id="profileBtn"
+                    type="button"
+                    aria-label="Profile"
+                >
+                    ML
+                </button>
+
+            </header>
+
+
+            <!-- =========================
+                 CHAT AREA
+            ========================== -->
+
+            <section
+                class="chat-container"
+                id="chatContainer"
+            >
+
+                <!-- Welcome -->
+
+                <div
+                    class="welcome"
+                    id="welcome"
+                >
+
+                    <div class="welcome-logo">
+                        N
+                    </div>
+
+                    <p class="eyebrow">
+                        NOUR OFFICIALS STUDIO
+                    </p>
+
+                    <h1>
+                        Welcome to
+                        <span>NOURGPT</span>
+                    </h1>
+
+                    <p class="welcome-text">
+                        Your intelligent AI assistant for ideas,
+                        learning, coding, creativity and more.
+                    </p>
+
+
+                    <!-- Prompt cards -->
+
+                    <div class="prompt-grid">
+
+                        <button
+                            class="prompt-card"
+                            type="button"
+                            data-prompt="Give me a unique software project idea"
+                        >
+
+                            <span class="prompt-icon">
+                                💡
+                            </span>
+
+                            <span class="prompt-content">
+
+                                <strong>
+                                    Get an idea
+                                </strong>
+
+                                <small>
+                                    Discover something new
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="prompt-card"
+                            type="button"
+                            data-prompt="Teach me something useful about coding"
+                        >
+
+                            <span class="prompt-icon">
+                                💻
+                            </span>
+
+                            <span class="prompt-content">
+
+                                <strong>
+                                    Learn coding
+                                </strong>
+
+                                <small>
+                                    Improve your development skills
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="prompt-card"
+                            type="button"
+                            data-prompt="Help me create a professional website"
+                        >
+
+                            <span class="prompt-icon">
+                                🌐
+                            </span>
+
+                            <span class="prompt-content">
+
+                                <strong>
+                                    Build a website
+                                </strong>
+
+                                <small>
+                                    Create something professional
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="prompt-card"
+                            type="button"
+                            data-prompt="Explain this topic to me in simple English"
+                        >
+
+                            <span class="prompt-icon">
+                                🧠
+                            </span>
+
+                            <span class="prompt-content">
+
+                                <strong>
+                                    Explain something
+                                </strong>
+
+                                <small>
+                                    Make difficult topics simple
+                                </small>
+
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Messages -->
+
+                <div
+                    class="messages"
+                    id="messages"
+                >
+                    <!-- AI and user messages appear here -->
+                </div>
+
+
+                <!-- Typing indicator -->
+
+                <div
+                    class="typing"
+                    id="typing"
+                    hidden
+                >
+
+                    <div class="typing-avatar">
+                        N
+                    </div>
+
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 INPUT AREA
+            ========================== -->
+
+            <div class="composer-area">
+
+                <form
+                    class="composer"
+                    id="chatForm"
+                >
+
+                    <textarea
+                        id="messageInput"
+                        name="message"
+                        rows="1"
+                        placeholder="Message NOURGPT..."
+                        autocomplete="off"
+                        spellcheck="true"
+                    ></textarea>
+
+
+                    <button
+                        class="send-btn"
+                        id="sendBtn"
+                        type="submit"
+                        aria-label="Send message"
+                    >
+                        ↑
+                    </button>
+
+                </form>
+
+
+                <div class="composer-note">
+
+                    <span>
+                        NOURGPT can make mistakes. Check important information.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 FOOTER
+            ========================== -->
+
+            <footer class="footer">
+
+                <span>
+                    NOURGPT
+                </span>
+
+                <span>
+                    •
+                </span>
+
+                <span>
+                    Built by Muhammad Laminu
+                </span>
+
+                <span>
+                    •
+                </span>
+
+                <span>
+                    NOUR OFFICIALS STUDIO
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         PROFILE PANEL
+    ========================== -->
+
+    <div
+        class="profile-panel"
+        id="profilePanel"
+        hidden
+    >
+
+        <div class="profile-header">
+
+            <div class="profile-photo">
+                ML
+            </div>
+
+            <div>
+                <strong>
+                    Muhammad Laminu
+                </strong>
+
+                <span>
+                    Founder & Developer
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="profile-body">
+
+            <p>
+                Creator of NOURGPT and founder of
+                NOUR OFFICIALS STUDIO.
+            </p>
+
+            <div class="profile-tag">
+                AI • Apps • Web • Technology
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         OVERLAY
+    ========================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+        hidden
+    ></div>
+
+
+    <!-- =========================
+         SCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+                                →
